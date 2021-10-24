@@ -1,0 +1,22 @@
+<%- include("header") -%>
+    <div class="box" id="heading">
+        <h1><%= ejsTitle %></h1>
+    </div>
+
+    <div class="box">
+        <% ejsItems.forEach(item => { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+                    <p><%= item.itemName %></p>
+                </div>
+                <input type="hidden" name="listTitle" value="<%= ejsTitle %>">
+            </form>
+        <% }); %>
+
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" value="" placeholder="Enter new item!" autocomplete="off">
+            <button type="submit" name="title" , value="<%= ejsTitle %>">+</button>
+        </form>
+    </div>
+<%- include("footer") -%>
